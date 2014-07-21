@@ -1,0 +1,50 @@
+apply plugin: 'jetty'
+apply plugin: 'java'
+apply plugin: 'spring-boot'
+
+dependencies {
+    providedCompile 'org.springframework:spring-webmvc:4.0.6.RELEASE'
+
+
+
+    compile("org.springframework.boot:spring-boot-starter-web:1.1.4.RELEASE")
+    compile("org.springframework.boot:spring-boot-starter-tomcat:1.1.4.RELEASE")
+    compile("org.springframework.boot:spring-boot-starter-actuator:1.1.4.RELEASE")
+
+    compile 'org.springframework:spring-core:4.0.6.RELEASE'
+    compile 'org.springframework:spring-beans:4.0.6.RELEASE'
+    compile 'org.springframework:spring-jdbc:4.0.6.RELEASE'
+    compile 'org.springframework:spring-orm:4.0.6.RELEASE'
+    compile 'org.springframework:spring-tx:4.0.6.RELEASE'
+    compile 'org.springframework:spring-context:4.0.6.RELEASE'
+    compile 'org.springframework:spring-context-support:4.0.6.RELEASE'
+    compile 'org.hibernate:hibernate-core:4.3.5.Final'
+    compile 'org.hibernate:hibernate-entitymanager:4.3.5.Final'
+    compile 'mysql:mysql-connector-java:5.1.31'
+    compile 'org.apache.commons:commons-dbcp2:2.0'
+
+    compile 'jstl:jstl:1.2'
+
+}
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.1.4.RELEASE")
+    }
+}
+
+jar {
+    baseName = 'user-management'
+    version =  '0.1.0'
+}
+
+
+configurations {
+    mysql
+    compile { extendsFrom mysql }
+}
+
